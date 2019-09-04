@@ -118,7 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rtxtRequirement.Text" xml:space="preserve">
-    <value>Filnamnen ska enbart innehålla bokstäver (A–Z, a-z), siffror och eventuellt understrykningstecken, _, samt eventuellt suffix. 
+    <value>å, Å blir aa eller AA
+ä, Ä blir ae eller AE
+ö, Ö blir oe eller OE
+ü, Ü blir ue eller UE
+mellanslag i filnamn byts ut mot _
+även ogiltiga tecken som { [ : osv kan bytas ut mot _
+
+Filnamnen ska enbart innehålla bokstäver (A–Z, a-z), siffror och eventuellt understrykningstecken, _, samt eventuellt suffix. 
       o Filer med samma namn men från till exempel olika län och/eller årgångar – lägg till ett ”_L” eller ”_l” följt av länskod respektive ett ”_AAR” eller ”_aar” följt av årtal, osv. 
       o Å, Ä, Ö i filnamn byts konsekvent ut mot AA, AE, OE. Om man har ett Ü så byts det ut mot UE. 
       o Filnamn får vara högst 50 tecken långa. 
@@ -127,4 +134,10 @@
      Observera att samtliga filnamn inom en och samma leverans måste vara unika. Tänk också på att inte lägga personuppgifter i filnamn, exempelvis: anita_persson.txt eller 19620103_7025.pdf .
 </value>
   </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>172, 17</value>
+  </metadata>
+  <metadata name="folderBrowserDlg.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
