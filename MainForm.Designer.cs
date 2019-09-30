@@ -71,6 +71,9 @@
             "->",
             "_"}, -1);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnSelectOutputDir = new System.Windows.Forms.Button();
             this.txtOutputDir = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -89,18 +92,16 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteCurrentRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCheckName = new System.Windows.Forms.Button();
             this.btnExcute = new System.Windows.Forms.Button();
             this.btnSelectOriginalDir = new System.Windows.Forms.Button();
             this.txtOriginalDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rtxtLog = new System.Windows.Forms.RichTextBox();
             this.folderBrowserDlg = new System.Windows.Forms.FolderBrowserDialog();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteCurrentRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnCheckName = new System.Windows.Forms.Button();
+            this.btnTraverse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -148,6 +149,30 @@
             this.splitContainer1.Size = new System.Drawing.Size(1147, 633);
             this.splitContainer1.SplitterDistance = 332;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(866, 47);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(188, 21);
+            this.textBox2.TabIndex = 10;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(866, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(210, 21);
+            this.textBox1.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1060, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // btnSelectOutputDir
             // 
@@ -201,6 +226,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btnTraverse);
             this.splitContainer2.Panel2.Controls.Add(this.btnCheckName);
             this.splitContainer2.Panel2.Controls.Add(this.btnExcute);
             this.splitContainer2.Size = new System.Drawing.Size(1141, 237);
@@ -351,12 +377,37 @@
             this.columnHeader4.Text = "Replacement";
             this.columnHeader4.Width = 116;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteCurrentRowToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 26);
+            // 
+            // deleteCurrentRowToolStripMenuItem
+            // 
+            this.deleteCurrentRowToolStripMenuItem.Name = "deleteCurrentRowToolStripMenuItem";
+            this.deleteCurrentRowToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.deleteCurrentRowToolStripMenuItem.Text = "Delete Current Row";
+            this.deleteCurrentRowToolStripMenuItem.Click += new System.EventHandler(this.DeleteCurrentRowToolStripMenuItem_Click);
+            // 
+            // btnCheckName
+            // 
+            this.btnCheckName.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCheckName.Location = new System.Drawing.Point(32, 88);
+            this.btnCheckName.Name = "btnCheckName";
+            this.btnCheckName.Size = new System.Drawing.Size(160, 50);
+            this.btnCheckName.TabIndex = 1;
+            this.btnCheckName.Text = "Check Name";
+            this.btnCheckName.UseVisualStyleBackColor = true;
+            this.btnCheckName.Click += new System.EventHandler(this.BtnCheckName_Click);
+            // 
             // btnExcute
             // 
             this.btnExcute.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExcute.Location = new System.Drawing.Point(32, 13);
             this.btnExcute.Name = "btnExcute";
-            this.btnExcute.Size = new System.Drawing.Size(160, 95);
+            this.btnExcute.Size = new System.Drawing.Size(160, 69);
             this.btnExcute.TabIndex = 0;
             this.btnExcute.Text = "Execute Change";
             this.btnExcute.UseVisualStyleBackColor = true;
@@ -404,54 +455,16 @@
             this.rtxtLog.TabIndex = 0;
             this.rtxtLog.Text = "";
             // 
-            // contextMenuStrip1
+            // btnTraverse
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteCurrentRowToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 26);
-            // 
-            // deleteCurrentRowToolStripMenuItem
-            // 
-            this.deleteCurrentRowToolStripMenuItem.Name = "deleteCurrentRowToolStripMenuItem";
-            this.deleteCurrentRowToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.deleteCurrentRowToolStripMenuItem.Text = "Delete Current Row";
-            this.deleteCurrentRowToolStripMenuItem.Click += new System.EventHandler(this.DeleteCurrentRowToolStripMenuItem_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1060, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(866, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 21);
-            this.textBox1.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(866, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(188, 21);
-            this.textBox2.TabIndex = 10;
-            // 
-            // btnCheckName
-            // 
-            this.btnCheckName.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCheckName.Location = new System.Drawing.Point(32, 114);
-            this.btnCheckName.Name = "btnCheckName";
-            this.btnCheckName.Size = new System.Drawing.Size(160, 95);
-            this.btnCheckName.TabIndex = 1;
-            this.btnCheckName.Text = "Check Name";
-            this.btnCheckName.UseVisualStyleBackColor = true;
-            this.btnCheckName.Click += new System.EventHandler(this.BtnCheckName_Click);
+            this.btnTraverse.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTraverse.Location = new System.Drawing.Point(32, 144);
+            this.btnTraverse.Name = "btnTraverse";
+            this.btnTraverse.Size = new System.Drawing.Size(160, 50);
+            this.btnTraverse.TabIndex = 2;
+            this.btnTraverse.Text = "Travers Fold";
+            this.btnTraverse.UseVisualStyleBackColor = true;
+            this.btnTraverse.Click += new System.EventHandler(this.BtnTraverse_Click);
             // 
             // MainForm
             // 
@@ -520,6 +533,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCheckName;
+        private System.Windows.Forms.Button btnTraverse;
     }
 }
 

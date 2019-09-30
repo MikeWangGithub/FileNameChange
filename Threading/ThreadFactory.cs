@@ -27,6 +27,9 @@ namespace FileNameChange.Threading
                 case ThreadName.CheckName:
                     thread = new ThreadCheckName<T>(_tokenSource, _threadParameter);
                     break;
+                case ThreadName.Traverse:
+                    thread = new ThreadTraverse<T>(_tokenSource, _threadParameter);
+                    break;
                 default:
                     break;
             }

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Algorithm\RegularExpression.cs" />
     <Compile Include="GlobalObject\CharacterDictionary.cs" />
+    <Compile Include="Threading\ThreadTraverse.cs" />
     <Compile Include="Threading\ThreadCheckName.cs" />
     <Compile Include="Tools\IHistoryRecorder.cs" />
     <Compile Include="GlobalObject\LoggerHelper.cs" />

@@ -42,7 +42,10 @@ namespace FileNameChange
             LoggerHelper.Initial(this.rtxtLog);
             //Clear TextBox.Text 
             this.txtOriginalDir.Clear();
-            this.txtOriginalDir.Text = @"c:\test";
+            //this.txtOriginalDir.Text = @"c:\test";
+            this.textBox1.Visible = false;
+            this.textBox2.Visible = false;
+            this.button1.Visible = false;
 
             //Initial CharacterDictionay
             CharacterDictionary.Initial(lstvReplacement.Items[0].SubItems[3].Text.Trim());
@@ -143,6 +146,11 @@ namespace FileNameChange
                 case FileNameChange.Tools.ThreadName.CheckName:
                     param = this.GetCheckNameParameter();
                     break;
+                case FileNameChange.Tools.ThreadName.Traverse:
+                    param = this.GetTraverseParameter();
+                    break;
+
+                    
                 default:
                     break;
             }
@@ -165,7 +173,14 @@ namespace FileNameChange
             return rtn;
 
         }
+        private TraverseParameter GetTraverseParameter()
+        {
+            TraverseParameter rtn = new TraverseParameter();
+            //Outputpath is the checking 's original path. 
+            rtn.SetOriginalRootPath(this.txtOriginalDir.Text.Trim());
+            return rtn;
 
+        }
         #endregion
         #region Button Status controll
         /// <summary>
@@ -182,6 +197,11 @@ namespace FileNameChange
         {
             this.btnCheckName.Enabled = isEnabled;
             this.btnExcute.Enabled = isEnabled;
+            SetOpenDirButtonStatus(isEnabled);
+        }
+        private void SetTraverseButtonStatus(bool isEnabled)
+        {
+            this.btnTraverse.Enabled = isEnabled;
             SetOpenDirButtonStatus(isEnabled);
         }
         /// <summary>
@@ -208,6 +228,9 @@ namespace FileNameChange
                     break;
                 case FileNameChange.Tools.ThreadName.CheckName:
                     this.SetCheckNameButtonStatus(flag);
+                    break;
+                case FileNameChange.Tools.ThreadName.Traverse:
+                    this.SetTraverseButtonStatus(flag);
                     break;
                 default:
                     break;
@@ -326,6 +349,11 @@ namespace FileNameChange
         private async void BtnCheckName_Click(object sender, EventArgs e)
         {
             await RunThread(FileNameChange.Tools.ThreadName.CheckName);
+        }
+
+        private async void BtnTraverse_Click(object sender, EventArgs e)
+        {
+            await RunThread(FileNameChange.Tools.ThreadName.Traverse);
         }
     }
 }
