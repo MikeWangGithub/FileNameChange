@@ -8,19 +8,21 @@ using FileNameChange.Tools;
 using System.Threading;
 using FileNameChange.Algorithm;
 using FileNameChange.GlobalObject;
+using BaseClassLibrary.Tools;
+using BaseClassLibrary.Threading;
 
 namespace FileNameChange.Threading
 {
     /// <summary>
     /// Thread for get a new PIN.
     /// </summary>
-    public class ThreadCheckName<T> : ParentThread<T>
+    public class CheckName : ParentThread<bool>
     {
         private CheckNameParameter param;
         //private IHistoryRecorder SuccessRecorder;
         private IHistoryRecorder FailRecorder;
         private int failamount=0;
-        public ThreadCheckName(CancellationTokenSource _tokenSource, ICloneable _threadParameter) : base(_tokenSource, _threadParameter)
+        public CheckName(CancellationTokenSource _tokenSource, ICloneable _threadParameter) : base(_tokenSource, _threadParameter)
         {
             if (this.ThreadParameter != null)
             {
@@ -39,7 +41,7 @@ namespace FileNameChange.Threading
             if (rtn)
             {
                 //SuccessRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.HistorRecorderClassName,new object[] { SystemConfiguration.SuccessHistoryName, true });
-                FailRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.HistorRecorderClassName, new object[] { SystemConfiguration.FailHistoryName, true });
+                FailRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.GetValue("HistorRecorderClassName"), new object[] { SystemConfiguration.GetValue("FailHistoryName"), true });
 
             }
             else
@@ -54,7 +56,7 @@ namespace FileNameChange.Threading
         /// recursive  call by self
         /// </summary>
         /// <returns></returns>
-        public override T RunSubThread(ICloneable thparam)
+        public override bool RunSubThread(ICloneable thparam)
         {
             //judage if threading is cancelled.
             this.IsTaskCanceled();
@@ -67,11 +69,11 @@ namespace FileNameChange.Threading
             }
             else
             {
-                return default(T);
+                return false;
             }
             //Check Directory 
             DirectoryInfo outputFold = new DirectoryInfo(param.OriginalRootPath);
-            invalidInfo = CheckName(outputFold.Name);
+            invalidInfo = CheckFileName(outputFold.Name);
             Info = "";
             if (invalidInfo != null)
             {
@@ -96,7 +98,7 @@ namespace FileNameChange.Threading
             foreach (var file in OriginalFileList)
             {
                 string originalFileName = file.Name;
-                invalidInfo = CheckName(originalFileName);
+                invalidInfo = CheckFileName(originalFileName);
                 Info = "";
                 if (invalidInfo != null)
                 {
@@ -122,7 +124,7 @@ namespace FileNameChange.Threading
                 RunSubThread(paramSub);
             }
 
-            return default(T);
+            return false;
         }
 
         /// <summary>
@@ -168,18 +170,17 @@ namespace FileNameChange.Threading
         {
             return "\""+ Index.ToString() + "\",\"" + es.ToString() + "\",\"" + InvalidInfo  + "\",\"" + originalFileFullName + "\"";
         }
-        private List<string> CheckName(string OriginalName)
+        private List<string> CheckFileName(string OriginalName)
         {
             List<string> rtn = new List<string>();
-            foreach (string item in SystemConfiguration.RegexRegular_InvalidDict.Keys)
+            foreach (string item in RegexRegularClass.RegexRegular_InvalidDict.Keys)
             {
-                HashSet<string> m = RegularExpression.GetMatchData(OriginalName, SystemConfiguration.RegexRegular_InvalidDict[item]);
+                HashSet<string> m = RegularExpression.GetMatchData(OriginalName, RegexRegularClass.RegexRegular_InvalidDict[item]);
                 
                 if (m.Count > 0) {
                     rtn.Add(item);
                 }
                 
-
             }
             
             return rtn; ;

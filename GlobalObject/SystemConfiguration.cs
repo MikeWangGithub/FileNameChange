@@ -83,12 +83,38 @@ namespace FileNameChange.GlobalObject
         //<add key = "RegexRegular_Invalid" value="(19|20)[0-9]{2}[0-1]{1}[0-2]{1}[0-3]{1}[0-9]{1}(_|-)[0-9]{4}%.{50,}" />
         private static Dictionary<string,string> _RegexRegular_InvalidDict;
         public static Dictionary<string, string> RegexRegular_InvalidDict { get { return _RegexRegular_InvalidDict; } }
-        
-        
+
+        private static Dictionary<string, string> _Configurations;
+
+        public static Dictionary<string, string> Configurations
+        {
+            get { return _Configurations; }
+        }
+        public static void AddValue(string key,string value)
+        {
+            if (_Configurations != null)
+            {
+                //if()
+                _Configurations.Add(key, value);
+            }
+        }
+
+        public static void SetValue(string key, string value)
+        {
+            if (_Configurations != null)
+            {
+                //if()
+                _Configurations[key] = value;
+            }
+        }
         public static void Initial(string executedPath)
         {
-            SetExecutedPath(executedPath);
-            SetAppPath(System.IO.Directory.GetCurrentDirectory());
+            _Configurations = new Dictionary<string, string>();
+            AddValue("ExecutedPath", executedPath);
+            AddValue("AppPath", System.IO.Directory.GetCurrentDirectory());
+
+            //SetExecutedPath(executedPath);
+            //SetAppPath(System.IO.Directory.GetCurrentDirectory());
         
             LoadConfiguraion();
             
@@ -99,8 +125,11 @@ namespace FileNameChange.GlobalObject
 
             //Set debug
             SetDebug((AppConfig.GetAppConfig("debug").Trim().ToLower() == "true") ? true : false);
+            //AddValue("Debug", AppConfig.GetAppConfig("debug").Trim().ToLower());
+
             //Set logger
-            SetLoggerClassName(AppConfig.GetAppConfig("Logger"));
+            //SetLoggerClassName(AppConfig.GetAppConfig("Logger"));
+            AddValue("LoggerClassName", AppConfig.GetAppConfig("Logger"));
             //Set HistorRecorderClass
             SetHistorRecorderClassName(AppConfig.GetAppConfig("HistorRecorderClass"));
             //Set HistorName
@@ -123,13 +152,14 @@ namespace FileNameChange.GlobalObject
             _RegexRegular_InvalidDict = new Dictionary<string, string>();
             string s = AppConfig.GetAppConfig("RegexRegular_Invalid");
             string[] ls = s.Split('%');
-            foreach(string i in ls)
+            foreach (string i in ls)
             {
                 string[] x1 = i.Split(':');
-                if (x1.Length >= 2) {
+                if (x1.Length >= 2)
+                {
                     _RegexRegular_InvalidDict.Add(x1[0], x1[1]);
                 }
-                
+
             }
 
         }

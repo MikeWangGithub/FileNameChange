@@ -8,19 +8,21 @@ using FileNameChange.Tools;
 using System.Threading;
 using FileNameChange.Algorithm;
 using FileNameChange.GlobalObject;
+using BaseClassLibrary.Tools;
+using BaseClassLibrary.Threading;
 
 namespace FileNameChange.Threading
 {
     /// <summary>
     /// Thread for get a new PIN.
     /// </summary>
-    public class ThreadChangeFileName<T> : ParentThread<T>
+    public class ChangeFileName<T> : ParentThread<T>
     {
         private ChangeFileNameParameter param;
         private IHistoryRecorder SuccessRecorder;
         //private IHistoryRecorder FailRecorder;
         private int successamount=0,failamount=0;
-        public ThreadChangeFileName(CancellationTokenSource _tokenSource, ICloneable _threadParameter) : base(_tokenSource, _threadParameter)
+        public ChangeFileName(CancellationTokenSource _tokenSource, ICloneable _threadParameter) : base(_tokenSource, _threadParameter)
         {
             if (this.ThreadParameter != null)
             {
@@ -38,7 +40,7 @@ namespace FileNameChange.Threading
             bool rtn = System.IO.Directory.Exists(param.OriginalRootPath);
             if (rtn)
             {
-                SuccessRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.HistorRecorderClassName,new object[] { SystemConfiguration.SuccessHistoryName, true });
+                SuccessRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.GetValue("HistorRecorderClassName"),new object[] { SystemConfiguration.GetValue("SuccessHistoryName"), true });
                 //FailRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.HistorRecorderClassName, new object[] { SystemConfiguration.FailHistoryName, true });
 
             }
@@ -231,7 +233,7 @@ namespace FileNameChange.Threading
         }
         private string ConvertToValidName(string OriginalName)
         {
-            HashSet<string> invalidCharacter = RegularExpression.GetMatchData(OriginalName, SystemConfiguration.InvalidCharacter);
+            HashSet<string> invalidCharacter = RegularExpression.GetMatchData(OriginalName, SystemConfiguration.GetValue("InvalidCharacter"));
             string newFileName = OriginalName;
             if (invalidCharacter.Count > 0)
             {

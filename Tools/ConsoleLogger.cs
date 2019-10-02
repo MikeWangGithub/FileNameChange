@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FileNameChange.Tools;
+using BaseClassLibrary.BaseInterface;
 
 namespace FileNameChange.Tools
 {
@@ -49,9 +49,12 @@ namespace FileNameChange.Tools
 
         public void Error(string errorText, Exception exception)
         {
-            RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Error]:{errorText} - Exception:{exception.Message}", System.Drawing.Color.Red);
+            RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Error]:{errorText} - Exception:{exception.Message + "\r\n"}", System.Drawing.Color.Red);
         }
-
+        public void Clear()
+        {
+            _richTextBox.Clear();
+        }
         public void RecordColorLog(string text, System.Drawing.Color color)
         {
             if (this._richTextBox == null) return;

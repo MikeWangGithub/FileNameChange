@@ -84,6 +84,7 @@ namespace FileNameChange.Algorithm
             Regex regex = new Regex(RegexString);
             return regex.Replace(SourceText, replacement);
             
+            
         }
     }
 }

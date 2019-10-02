@@ -8,6 +8,8 @@ using FileNameChange.Tools;
 using System.Threading;
 using FileNameChange.Algorithm;
 using FileNameChange.GlobalObject;
+using BaseClassLibrary.Tools;
+using BaseClassLibrary.Threading;
 
 namespace FileNameChange.Threading
 {
@@ -40,7 +42,7 @@ namespace FileNameChange.Threading
             if (rtn)
             {
                 //SuccessRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.HistorRecorderClassName,new object[] { SystemConfiguration.SuccessHistoryName, true });
-                SuccessRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.HistorRecorderClassName, new object[] { SystemConfiguration.SuccessHistoryName, true });
+                SuccessRecorder = ObjectBuildFactory<IHistoryRecorder>.Instance(SystemConfiguration.GetValue("HistorRecorderClassName"), new object[] { SystemConfiguration.GetValue("SuccessHistoryName"), true });
 
             }
             else
@@ -140,9 +142,9 @@ namespace FileNameChange.Threading
         private List<string> CheckName(string OriginalName)
         {
             List<string> rtn = new List<string>();
-            foreach (string item in SystemConfiguration.RegexRegular_InvalidDict.Keys)
+            foreach (string item in RegexRegularClass.RegexRegular_InvalidDict.Keys)
             {
-                HashSet<string> m = RegularExpression.GetMatchData(OriginalName, SystemConfiguration.RegexRegular_InvalidDict[item]);
+                HashSet<string> m = RegularExpression.GetMatchData(OriginalName, RegexRegularClass.RegexRegular_InvalidDict[item]);
                 
                 if (m.Count > 0) {
                     rtn.Add(item);
