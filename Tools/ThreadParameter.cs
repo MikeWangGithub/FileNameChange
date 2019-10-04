@@ -110,7 +110,75 @@ namespace FileNameChange.Tools
         }
     }
 
+    /// <summary>
+    /// Thread Parameter for Digit Initial
+    /// </summary>
+    public class ValidatePDFParameter : ICloneable
+    {
 
+        /// <summary>
+        /// RootPath
+        /// program will search all of the files under the RootPath and change name with regular Expression
+        /// </summary>
+        private string _VeraPDFPath;
+        public string VeraPDFPath
+        {
+            get { return _VeraPDFPath; }
+        }
+        public void SetVeraPDFPath(string value)
+        {
+            _VeraPDFPath = value;
+        }
+        /// <summary>
+        /// RootPath
+        /// program will search all of the files under the RootPath and change name with regular Expression
+        /// </summary>
+        private string _ResultFilePath;
+        public string ResultFilePath
+        {
+            get { return _ResultFilePath; }
+        }
+        public void SetResultFilePath(string value)
+        {
+            _ResultFilePath = value;
+        }
+        private string _PDFCheckingDir;
+        public string PDFCheckingDir
+        {
+            get { return _PDFCheckingDir; }
+        }
+        public void SetPDFCheckingDir(string value)
+        {
+            _PDFCheckingDir = value;
+        }
+
+        private bool _IsContainsSubFold;
+        public bool IsContainsSubFold
+        {
+            get { return _IsContainsSubFold; }
+        }
+        public void SetIsContainsSubFold(bool value)
+        {
+            _IsContainsSubFold = value;
+        }
+        private string  _CheckIDNM;
+        public string CheckIDNM
+        {
+            get { return _CheckIDNM; }
+        }
+        public void SetCheckIDNM(string value)
+        {
+            _CheckIDNM = value;
+        }
+        /// <summary>
+        /// Copy object, high effective than create object
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
     /// <summary>
     /// Thread Parameter for Digit Initial
     /// </summary>

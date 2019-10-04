@@ -17,6 +17,8 @@ using BaseClassLibrary.Configuration;
 using BaseClassLibrary.Tools;
 using System.Reflection;
 using FileNameChange.Algorithm;
+using FCNDBContext.BussinessLayer;
+using FCNDBContext.BussinessEntity;
 
 
 namespace FileNameChange
@@ -93,7 +95,8 @@ namespace FileNameChange
             SystemConfiguration.AddValue("NavigationReplacementFileNameRegex", AppConfig.GetAppConfig("NavigationReplacementFileNameRegex"));
             SystemConfiguration.AddValue("NavigationSourceHTMLRegex", AppConfig.GetAppConfig("NavigationSourceHTMLRegex"));
             SystemConfiguration.AddValue("NavigationReplacementHTMLRegex", AppConfig.GetAppConfig("NavigationReplacementHTMLRegex"));
-
+            SystemConfiguration.AddValue("PDFValidating", AppConfig.GetAppConfig("PDFValidating"));
+            
         }
         #region Threading functions
 
@@ -111,6 +114,18 @@ namespace FileNameChange
             CheckNameParameter rtn = new CheckNameParameter();
             //Outputpath is the checking 's original path. 
             rtn.SetOriginalRootPath(this.txtOutputDir.Text.Trim());
+            return rtn;
+
+        }
+        public ValidatePDFParameter GetValidatePDFParameter()
+        {
+            ValidatePDFParameter rtn = new ValidatePDFParameter();
+            //Outputpath is the checking 's original path. 
+            rtn.SetPDFCheckingDir(this.txtPDFCheckDir.Text.Trim());
+            rtn.SetVeraPDFPath(this.txtVerpadExcutePath.Text.Trim());
+            rtn.SetResultFilePath(this.txtVeraPDFResultFile.Text.Trim());
+            rtn.SetIsContainsSubFold(this.ckbPDFCheckSubFold.Checked);
+            rtn.SetCheckIDNM(this.txtCheckIDNM.Text.Trim());
             return rtn;
 
         }
@@ -206,6 +221,15 @@ namespace FileNameChange
             this.txtHTMLReplacementReg.Enabled = IsEnabled;
 
         }
+
+        private void SetValidatePDFButtonStatus(bool isEnabled)
+        {
+            this.btnExcutePDFValidation.Enabled = isEnabled;
+            this.btnSelectPDFCheckingDir.Enabled = isEnabled;
+            this.btnSelectPDFResultFile.Enabled = isEnabled;
+            this.btnSelectVeraPDF.Enabled = isEnabled;
+
+        }
         #endregion End Button Status controll
 
 
@@ -219,7 +243,28 @@ namespace FileNameChange
                 this.txtOriginalDir.Text = folderBrowserDlg.SelectedPath;
             }
         }
+        private void BtnSelectVeraPDF_Click(object sender, EventArgs e)
+        {
+            if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.txtVerpadExcutePath.Text = openFileDialog1.FileName;
+            }
+        }
+        private void BtnSelectPDFResultFile_Click(object sender, EventArgs e)
+        {
+            if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.txtVeraPDFResultFile.Text = openFileDialog1.FileName;
+            }
+        }
 
+        private void BtnSelectPDFCheckingDir_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDlg.ShowDialog() == DialogResult.OK)
+            {
+                this.txtPDFCheckDir.Text = folderBrowserDlg.SelectedPath;
+            }
+        }
         private void BtnSelectOutputDir_Click(object sender, EventArgs e)
         {
             if (folderBrowserDlg.ShowDialog() == DialogResult.OK)
@@ -318,33 +363,36 @@ namespace FileNameChange
         #region Button click Event
         private void Button1_Click(object sender, EventArgs e)
         {
-            string dir = @"c:\testMike_Wang0";
-            int index = 0;
+            //LoggerHelper.Info(  VeraPDFResultAnalysis.ValidatePDF(@"c:\test\verapdf.txt").ToString());
+            CheckBLL checkbll = new CheckBLL();
+            FCNDBContext.DataAccessLayer.FCNDBContext ctx = new FCNDBContext.DataAccessLayer.FCNDBContext("SQLServerDBString");
+            Check check = checkbll.GetCheckByID(2, ctx);
+            check.CreateDate = DateTime.Now;
+            check.Name = "update check";
+            ctx.PDFCheck.Attach(check);
+
+            ctx.Entry(check).Property(p => p.Name).IsModified = true;
+            //checkbll.Update(check, ctx);
+            Check check2 = new Check();
+            check2.CreateDate = DateTime.Now;
+            check2.Name = "add check";
+
+            ctx.PDFCheck.Add(check2);
+            //ctx.Entry(check2).Property(p => p.Name).IsModified = true;
+            // context.Entry(file).Property(p => p.Memo).IsModified = true;
             try
             {
-                if (!System.IO.Directory.Exists(dir))
-                {
-                    System.IO.Directory.CreateDirectory(dir);
-                }
-                System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(dir);
-                
-                while (dirInfo.Exists)
-                {
-                    index++;
-                    string subdir= "testMike_Wang0" + index.ToString();
-                    dirInfo = dirInfo.CreateSubdirectory(subdir);
-                    if (index > 50)
-                    {
-                        break;
-                    }
-                   
-                }
+                int amount = ctx.SaveChanges();
+                LoggerHelper.Info("Savechanges count:" + amount.ToString()+"\r\n");
+
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                LoggerHelper.Error (dir + "\r\n" ,ex);
+                LoggerHelper.Info("Savechanges count:" + ex.Message.ToString() + "\r\n");
+
             }
-            
+
+            //checkbll.SaveChange(ctx);
 
         }
         private async void BtnExcute_Click(object sender, EventArgs e)
@@ -374,7 +422,7 @@ namespace FileNameChange
         {
 
             //await RunThread(FileNameChange.Tools.ThreadName.Traverse);
-            StartThreadParameter st = new StartThreadParameter();
+            StartThreadParameter st = new StartThreadParameter(this);
             st.SetgenericTypeName(typeof(System.Boolean));
             st.SetFullThreadName("FileNameChange.Threading.ThreadTraverse`1");
             st.SetGetParamgeterFunctionName("GetTraverseParameter");
@@ -391,10 +439,22 @@ namespace FileNameChange
             st.SetButtonStatusFuncionName("SetChangeNavigationPageButtonStatus");
             bool x = await RunThread(st);
         }
+        private async void BtnExcutePDFValidation_Click(object sender, EventArgs e)
+        {
+            StartThreadParameter st = new StartThreadParameter(this);
+            //st.SetFunctoinClass(this);
+            st.SetgenericTypeName(typeof(System.Boolean));
+            st.SetFullThreadName("FileNameChange.Threading.ValidatePDF`1");
+            st.SetGetParamgeterFunctionName("GetValidatePDFParameter");
+            st.SetButtonStatusFuncionName("SetValidatePDFButtonStatus");
+            bool x = await RunThread(st);
+        }
+
+
 
 
         #endregion Event
 
-        
+
     }
 }

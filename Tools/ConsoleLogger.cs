@@ -34,22 +34,25 @@ namespace FileNameChange.Tools
         }
         public void Info(string infoText)
         {
-            RecordColorLog($"[{DateTime.Now.ToString("yy-MM-dd HH:mm")}][Info]:{infoText}", System.Drawing.Color.White);
+            RecordColorLog($"{infoText}", System.Drawing.Color.White);
         }
 
         public void Debug(string debugText)
         {
-            RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Debug]:{debugText}", System.Drawing.Color.YellowGreen);
+            //RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Debug]:{debugText}", System.Drawing.Color.YellowGreen);
+            RecordColorLog($"{debugText}", System.Drawing.Color.YellowGreen);
         }
 
         public void Warn(string warmText)
         {
-            RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Warn]:{warmText}", System.Drawing.Color.Blue);
+            RecordColorLog($"{warmText}", System.Drawing.Color.Pink );
+            //RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Warn]:{warmText}", System.Drawing.Color.Blue);
         }
 
         public void Error(string errorText, Exception exception)
         {
-            RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Error]:{errorText} - Exception:{exception.Message + "\r\n"}", System.Drawing.Color.Red);
+            RecordColorLog($"{errorText} - Exception:{exception.Message + "\r\n"}", System.Drawing.Color.Red);
+            //RecordColorLog($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}][Error]:{errorText} - Exception:{exception.Message + "\r\n"}", System.Drawing.Color.Red);
         }
         public void Clear()
         {

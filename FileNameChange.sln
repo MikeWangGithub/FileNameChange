@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileNameChange", "FileNameC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseClassLibrary", "..\ExampleWinformApp\BaseClassLibrary\BaseClassLibrary.csproj", "{C6DC31C8-E745-44D8-A72A-5212B0E2ABE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCNDBContext", "DBContext\FCNDBContext.csproj", "{ADCA14EF-5618-4D36-B8FD-BCC4F81DEFE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C6DC31C8-E745-44D8-A72A-5212B0E2ABE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6DC31C8-E745-44D8-A72A-5212B0E2ABE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6DC31C8-E745-44D8-A72A-5212B0E2ABE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADCA14EF-5618-4D36-B8FD-BCC4F81DEFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCA14EF-5618-4D36-B8FD-BCC4F81DEFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADCA14EF-5618-4D36-B8FD-BCC4F81DEFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCA14EF-5618-4D36-B8FD-BCC4F81DEFE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

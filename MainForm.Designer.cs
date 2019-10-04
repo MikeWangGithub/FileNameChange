@@ -30,42 +30,42 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "Others",
             "->",
             "_"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "2",
             "å",
             "->",
             "aa"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "3",
             "Å",
             "->",
             "AA"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "4",
             "ä",
             "->",
             "ae"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "5",
             "Ä",
             "->",
             "AE"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "6",
             "ö",
             "->",
             "oe"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
             "7",
             "Ö",
             "->",
             "OE"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
             "8",
             " ",
             "->",
@@ -124,6 +124,22 @@
             this.txtFileNameSearchReg = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExcuteReplacement = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtCheckIDNM = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ckbPDFCheckSubFold = new System.Windows.Forms.CheckBox();
+            this.btnSelectPDFCheckingDir = new System.Windows.Forms.Button();
+            this.txtPDFCheckDir = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtVeraPDFResultFile = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnSelectPDFResultFile = new System.Windows.Forms.Button();
+            this.btnSelectVeraPDF = new System.Windows.Forms.Button();
+            this.txtVerpadExcutePath = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnExcutePDFValidation = new System.Windows.Forms.Button();
             this.rtxtLog = new System.Windows.Forms.RichTextBox();
             this.folderBrowserDlg = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -156,6 +172,9 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -174,18 +193,19 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.rtxtLog);
             this.splitContainer1.Size = new System.Drawing.Size(1269, 633);
-            this.splitContainer1.SplitterDistance = 374;
+            this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.TabIndex = 0;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1269, 374);
+            this.tabControl1.Size = new System.Drawing.Size(1269, 322);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -203,7 +223,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1261, 348);
+            this.tabPage1.Size = new System.Drawing.Size(1261, 296);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Change FileName";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -294,9 +314,9 @@
             // 
             this.groupBox1.Controls.Add(this.splitContainer2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 88);
+            this.groupBox1.Location = new System.Drawing.Point(3, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1255, 257);
+            this.groupBox1.Size = new System.Drawing.Size(1255, 217);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -316,7 +336,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnTraverse);
             this.splitContainer2.Panel2.Controls.Add(this.btnCheckName);
             this.splitContainer2.Panel2.Controls.Add(this.btnExcute);
-            this.splitContainer2.Size = new System.Drawing.Size(1249, 237);
+            this.splitContainer2.Size = new System.Drawing.Size(1249, 197);
             this.splitContainer2.SplitterDistance = 885;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -334,7 +354,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(885, 237);
+            this.splitContainer3.Size = new System.Drawing.Size(885, 197);
             this.splitContainer3.SplitterDistance = 458;
             this.splitContainer3.TabIndex = 2;
             // 
@@ -347,7 +367,7 @@
             this.rtxtRequirement.Location = new System.Drawing.Point(0, 0);
             this.rtxtRequirement.Name = "rtxtRequirement";
             this.rtxtRequirement.ReadOnly = true;
-            this.rtxtRequirement.Size = new System.Drawing.Size(458, 237);
+            this.rtxtRequirement.Size = new System.Drawing.Size(458, 197);
             this.rtxtRequirement.TabIndex = 2;
             this.rtxtRequirement.Text = resources.GetString("rtxtRequirement.Text");
             // 
@@ -370,7 +390,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.lstvReplacement);
-            this.splitContainer4.Size = new System.Drawing.Size(423, 237);
+            this.splitContainer4.Size = new System.Drawing.Size(423, 197);
             this.splitContainer4.SplitterDistance = 42;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -428,18 +448,18 @@
             this.lstvReplacement.FullRowSelect = true;
             this.lstvReplacement.HideSelection = false;
             this.lstvReplacement.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
             this.lstvReplacement.Location = new System.Drawing.Point(0, 0);
             this.lstvReplacement.MultiSelect = false;
             this.lstvReplacement.Name = "lstvReplacement";
-            this.lstvReplacement.Size = new System.Drawing.Size(423, 191);
+            this.lstvReplacement.Size = new System.Drawing.Size(423, 151);
             this.lstvReplacement.TabIndex = 0;
             this.lstvReplacement.UseCompatibleStateImageBehavior = false;
             this.lstvReplacement.View = System.Windows.Forms.View.Details;
@@ -518,7 +538,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(926, 348);
+            this.tabPage2.Size = new System.Drawing.Size(1261, 296);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Select Original Directory";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -529,7 +549,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(742, 342);
+            this.panel2.Size = new System.Drawing.Size(1077, 290);
             this.panel2.TabIndex = 2;
             // 
             // splitContainer5
@@ -552,7 +572,7 @@
             // 
             this.splitContainer5.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer5.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer5.Size = new System.Drawing.Size(742, 342);
+            this.splitContainer5.Size = new System.Drawing.Size(1077, 290);
             this.splitContainer5.SplitterDistance = 77;
             this.splitContainer5.TabIndex = 1;
             // 
@@ -615,7 +635,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox3.Location = new System.Drawing.Point(369, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 261);
+            this.groupBox3.Size = new System.Drawing.Size(367, 209);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
@@ -678,7 +698,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(369, 261);
+            this.groupBox2.Size = new System.Drawing.Size(369, 209);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
@@ -735,9 +755,9 @@
             // 
             this.panel1.Controls.Add(this.btnExcuteReplacement);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(745, 3);
+            this.panel1.Location = new System.Drawing.Point(1080, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(178, 342);
+            this.panel1.Size = new System.Drawing.Size(178, 290);
             this.panel1.TabIndex = 1;
             // 
             // btnExcuteReplacement
@@ -751,6 +771,179 @@
             this.btnExcuteReplacement.UseVisualStyleBackColor = true;
             this.btnExcuteReplacement.Click += new System.EventHandler(this.BtnExcuteReplacement_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panel4);
+            this.tabPage3.Controls.Add(this.panel3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1261, 296);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Validate PDF-File";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtCheckIDNM);
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Controls.Add(this.ckbPDFCheckSubFold);
+            this.panel4.Controls.Add(this.btnSelectPDFCheckingDir);
+            this.panel4.Controls.Add(this.txtPDFCheckDir);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.txtVeraPDFResultFile);
+            this.panel4.Controls.Add(this.label12);
+            this.panel4.Controls.Add(this.btnSelectPDFResultFile);
+            this.panel4.Controls.Add(this.btnSelectVeraPDF);
+            this.panel4.Controls.Add(this.txtVerpadExcutePath);
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1008, 296);
+            this.panel4.TabIndex = 1;
+            // 
+            // txtCheckIDNM
+            // 
+            this.txtCheckIDNM.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCheckIDNM.Location = new System.Drawing.Point(171, 107);
+            this.txtCheckIDNM.Name = "txtCheckIDNM";
+            this.txtCheckIDNM.Size = new System.Drawing.Size(446, 26);
+            this.txtCheckIDNM.TabIndex = 26;
+            this.txtCheckIDNM.Text = "1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Location = new System.Drawing.Point(14, 107);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(132, 21);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Check ID/Name";
+            // 
+            // ckbPDFCheckSubFold
+            // 
+            this.ckbPDFCheckSubFold.AutoSize = true;
+            this.ckbPDFCheckSubFold.Checked = true;
+            this.ckbPDFCheckSubFold.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbPDFCheckSubFold.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckbPDFCheckSubFold.Location = new System.Drawing.Point(18, 131);
+            this.ckbPDFCheckSubFold.Name = "ckbPDFCheckSubFold";
+            this.ckbPDFCheckSubFold.Size = new System.Drawing.Size(138, 25);
+            this.ckbPDFCheckSubFold.TabIndex = 24;
+            this.ckbPDFCheckSubFold.Text = "Check subfold";
+            this.ckbPDFCheckSubFold.UseVisualStyleBackColor = true;
+            // 
+            // btnSelectPDFCheckingDir
+            // 
+            this.btnSelectPDFCheckingDir.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSelectPDFCheckingDir.Location = new System.Drawing.Point(623, 70);
+            this.btnSelectPDFCheckingDir.Name = "btnSelectPDFCheckingDir";
+            this.btnSelectPDFCheckingDir.Size = new System.Drawing.Size(101, 30);
+            this.btnSelectPDFCheckingDir.TabIndex = 23;
+            this.btnSelectPDFCheckingDir.Text = "Browse";
+            this.btnSelectPDFCheckingDir.UseVisualStyleBackColor = true;
+            this.btnSelectPDFCheckingDir.Click += new System.EventHandler(this.BtnSelectPDFCheckingDir_Click);
+            // 
+            // txtPDFCheckDir
+            // 
+            this.txtPDFCheckDir.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtPDFCheckDir.Location = new System.Drawing.Point(171, 74);
+            this.txtPDFCheckDir.Name = "txtPDFCheckDir";
+            this.txtPDFCheckDir.Size = new System.Drawing.Size(446, 26);
+            this.txtPDFCheckDir.TabIndex = 22;
+            this.txtPDFCheckDir.Text = "C:\\test AB";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label13.Location = new System.Drawing.Point(14, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(155, 21);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Checking Directory";
+            // 
+            // txtVeraPDFResultFile
+            // 
+            this.txtVeraPDFResultFile.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtVeraPDFResultFile.Location = new System.Drawing.Point(171, 42);
+            this.txtVeraPDFResultFile.Name = "txtVeraPDFResultFile";
+            this.txtVeraPDFResultFile.Size = new System.Drawing.Size(446, 26);
+            this.txtVeraPDFResultFile.TabIndex = 20;
+            this.txtVeraPDFResultFile.Text = " C:\\test\\pdfResult.txt";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(14, 45);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 21);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Result Path";
+            // 
+            // btnSelectPDFResultFile
+            // 
+            this.btnSelectPDFResultFile.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSelectPDFResultFile.Location = new System.Drawing.Point(623, 39);
+            this.btnSelectPDFResultFile.Name = "btnSelectPDFResultFile";
+            this.btnSelectPDFResultFile.Size = new System.Drawing.Size(101, 30);
+            this.btnSelectPDFResultFile.TabIndex = 18;
+            this.btnSelectPDFResultFile.Text = "Browse";
+            this.btnSelectPDFResultFile.UseVisualStyleBackColor = true;
+            this.btnSelectPDFResultFile.Click += new System.EventHandler(this.BtnSelectPDFResultFile_Click);
+            // 
+            // btnSelectVeraPDF
+            // 
+            this.btnSelectVeraPDF.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSelectVeraPDF.Location = new System.Drawing.Point(623, 8);
+            this.btnSelectVeraPDF.Name = "btnSelectVeraPDF";
+            this.btnSelectVeraPDF.Size = new System.Drawing.Size(101, 30);
+            this.btnSelectVeraPDF.TabIndex = 18;
+            this.btnSelectVeraPDF.Text = "Browse";
+            this.btnSelectVeraPDF.UseVisualStyleBackColor = true;
+            this.btnSelectVeraPDF.Click += new System.EventHandler(this.BtnSelectVeraPDF_Click);
+            // 
+            // txtVerpadExcutePath
+            // 
+            this.txtVerpadExcutePath.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtVerpadExcutePath.Location = new System.Drawing.Point(171, 10);
+            this.txtVerpadExcutePath.Name = "txtVerpadExcutePath";
+            this.txtVerpadExcutePath.Size = new System.Drawing.Size(446, 26);
+            this.txtVerpadExcutePath.TabIndex = 16;
+            this.txtVerpadExcutePath.Text = " C:\\Program Files\\VeraPDF\\verapdf.bat  ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(14, 15);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(111, 21);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Verapdf Path";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnExcutePDFValidation);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1008, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(253, 296);
+            this.panel3.TabIndex = 0;
+            // 
+            // btnExcutePDFValidation
+            // 
+            this.btnExcutePDFValidation.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExcutePDFValidation.Location = new System.Drawing.Point(72, 39);
+            this.btnExcutePDFValidation.Name = "btnExcutePDFValidation";
+            this.btnExcutePDFValidation.Size = new System.Drawing.Size(125, 117);
+            this.btnExcutePDFValidation.TabIndex = 4;
+            this.btnExcutePDFValidation.Text = "Validate PDF";
+            this.btnExcutePDFValidation.UseVisualStyleBackColor = true;
+            this.btnExcutePDFValidation.Click += new System.EventHandler(this.BtnExcutePDFValidation_Click);
+            // 
             // rtxtLog
             // 
             this.rtxtLog.BackColor = System.Drawing.Color.Black;
@@ -760,7 +953,7 @@
             this.rtxtLog.Location = new System.Drawing.Point(0, 0);
             this.rtxtLog.Name = "rtxtLog";
             this.rtxtLog.ReadOnly = true;
-            this.rtxtLog.Size = new System.Drawing.Size(1269, 255);
+            this.rtxtLog.Size = new System.Drawing.Size(1269, 307);
             this.rtxtLog.TabIndex = 0;
             this.rtxtLog.Text = "";
             // 
@@ -812,6 +1005,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -875,6 +1072,22 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtNavigationPageExtension;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtVerpadExcutePath;
+        private System.Windows.Forms.Button btnSelectVeraPDF;
+        private System.Windows.Forms.TextBox txtVeraPDFResultFile;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnSelectPDFResultFile;
+        private System.Windows.Forms.TextBox txtPDFCheckDir;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnSelectPDFCheckingDir;
+        private System.Windows.Forms.CheckBox ckbPDFCheckSubFold;
+        private System.Windows.Forms.Button btnExcutePDFValidation;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCheckIDNM;
     }
 }
 
